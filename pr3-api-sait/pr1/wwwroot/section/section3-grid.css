@@ -1,0 +1,12 @@
+﻿.grid-container {
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.column {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}

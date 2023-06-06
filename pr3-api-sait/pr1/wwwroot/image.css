@@ -1,0 +1,9 @@
+﻿.avatar {
+    border-radius: 75%;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+}
+.avatar-respolozhenie {
+    float: left;
+}

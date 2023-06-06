@@ -1,0 +1,50 @@
+﻿@page "/API"
+@inject WeatherService WeatherService
+
+<h1>API</h1>
+
+<p>City: Moscow</p>
+
+@if (WeatherRecords != null && WeatherRecords.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Max Temperature (°C)</th>
+                <th>Min Temperature (°C)</th>
+                <th>Description</th>
+                <th>Precipitation (mm)</th>
+                <th>Humidity (%)</th>
+                <th>Wind Speed (km/h)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in WeatherRecords)
+            {
+                <tr>
+                    <td>@record.Date.ToShortDateString()</td>
+                    <td>@record.MaxTemperature</td>
+                    <td>@record.MinTemperature</td>
+                    <td>@record.Description</td>
+                    <td>@record.Precipitation</td>
+                    <td>@record.Humidity</td>
+                    <td>@record.WindSpeed</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Louding.....</p>
+}
+
+@code {
+    private List<WeatherRecord> WeatherRecords;
+
+    protected override async Task OnInitializedAsync()
+    {
+        WeatherRecords = await WeatherService.GetWeatherForecast("Moscow", 20);
+    }
+}
