@@ -1,0 +1,31 @@
+﻿.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.column {
+    flex-basis: 50%;
+    padding: 10px;
+    height: 100px;
+    color: orange;
+}
+
+.progress-bar {
+    background-color: lightgray;
+    height: 5px;
+    position: relative;
+}
+
+.progress {
+    background-color: orange;
+    height: 100%;
+}
+
+.label {
+    margin-bottom: 10px;
+}

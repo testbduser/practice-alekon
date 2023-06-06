@@ -1,0 +1,72 @@
+﻿hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+}
+
+.avatar {
+    border-radius: 75%;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+}
+
+.avatar-respolozhenie {
+    float: left;
+}
+
+.name {
+    padding-top: 20px;
+    color: grey;
+    margin-bottom: 0;
+}
+
+.surname {
+    margin-top: 0;
+    color: goldenrod;
+    margin-bottom: 0;
+}
+
+.speciality {
+    margin-top: 0;
+    color: darkgrey;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.social-media {
+    display: inline;
+    margin-left: 400px;
+}
+
+.LPWE1 {
+    padding-top: 70px;
+    margin-top: 20px;
+}
+
+.locInf {
+    font-weight: bold;
+    margin-right: 130px;
+}
+
+.locInf2 {
+    margin-right: 50px;
+}
+
+.LPWE2 {
+    margin-top: 20px;
+}
+
+.number {
+    margin-left: 80px;
+    margin-right: 38px;
+}
+
+.email {
+    margin-left: 25px;
+}
+
+.web {
+    margin-left: 35px;
+    margin-right: 15px;
+}

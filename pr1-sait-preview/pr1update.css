@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+  }
+  
+  .section-1 {
+    flex: 1;
+    padding: 120px;
+    padding-right: 10px;
+  }
+
+  .section-2 {
+    flex: 2;
+    padding: 80px;
+  }
+
+.avatar {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 220px;
+    height: 220px;
+    margin-left: 120px;
+}
+
+.name {
+    margin-top: 20px;
+    padding-top: 70px;
+    color: #A9A9A9;
+    margin-bottom: 0;
+}
+
+.surname {
+    margin-top: 0;
+    color: #DAA520;
+    margin-bottom: 0;
+}
+
+.speciality {
+    margin-top: 0;
+    color: #A9A9A9;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.social-media {
+    display: inline;
+    margin-left: 400px;
+}
+
+.LPWE1 {
+    padding-top: 70px;
+    margin-top: 20px;
+}
+
+.locInf {
+    font-weight: bold;
+    margin-right: 130px;
+}
+
+.locInf2 {
+    margin-right: 50px;
+}
+
+.LPWE2 {
+    margin-top: 20px;
+}
+
+.number {
+    margin-left: 80px;
+    margin-right: 50px;
+}
+
+.email {
+    margin-left: 30px;
+}
+
+.web {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+.one-text {
+    display: flex;
+    margin-left: 200px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 60px;
+}
+.one-one-text {
+    padding-top: 47px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.two-text {
+    display: flex;
+    margin-left: 190px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 50px;
+}
+.two-two-text {
+    display: flex;
+    margin-left: 190px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 50px;
+}
+
+.three-text {
+    display: flex;
+    margin-left: 200px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 60px;
+}
+.three-three-text {
+    display: flex;
+    margin-left: 200px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-right: 60px;
+}
+
+.grid-container {
+    padding-top: 30px;
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.column {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+
+.container-skils {
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.column-skils {
+    flex-basis: 40%;
+    padding: 5px;
+    height: 100px;
+    color: orange;
+}
+
+.progress-bar {
+    background-color: lightgray;
+    height: 5px;
+    position: relative;
+}
+
+.progress {
+    background-color: orange;
+    height: 100%;
+}
+
+.label {
+    margin-bottom: 10px;
+}
