@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>pr4_private_sait</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Pages\Week - Копировать.razor.css">
+      <DependentUpon>Week.razor.css</DependentUpon>
+    </None>
+  </ItemGroup>
+
+</Project>

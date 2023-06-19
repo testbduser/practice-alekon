@@ -1,0 +1,110 @@
+﻿@page "/month"
+@inject WeatherService WeatherService
+@using System.Globalization
+@using System.Linq
+
+<h3>Выберите город</h3>
+<select @onchange="ChangeCity">
+    @foreach (string city in Cities)
+    {
+        <option value="@city">@city</option>
+    }
+</select>
+
+<h3>Выберите месяц</h3>
+<select @onchange="ChangeMonth">
+    @for (int i = 1; i <= 12; i++)
+    {
+        <option value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+    }
+</select>
+
+<h3>Погода в @SelectedCity в @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(SelectedMonth)</h3>
+
+<table class="month-table">
+    <tr>
+        <th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th>
+    </tr>
+    @foreach (var week in GetWeeksInMonth())
+    {
+        <tr>
+            @foreach (var day in week)
+            {
+                <td class="month-cell">
+                    <p>@day.Day</p>
+                    @if (WeatherRecords != null && WeatherRecords.Any(w => w.Date.Date == day.Date))
+                    {
+                        var weatherRecord = WeatherRecords.First(w => w.Date.Date == day.Date);
+                        <div class="weather-record">
+                            <p class="max-temp">Max: @weatherRecord.MaxTemperature °C</p>
+                            <p class="min-temp">Min: @weatherRecord.MinTemperature °C</p>
+                            <p class="description">@weatherRecord.Description</p>
+                        </div>
+                    }
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+@code {
+    private List<WeatherRecord> WeatherRecords { get; set; }
+    private List<string> Cities { get; set; }
+    private string SelectedCity { get; set; }
+    private int SelectedMonth { get; set; } = DateTime.Now.Month;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Cities = await WeatherService.GetCities();
+        SelectedCity = Cities.FirstOrDefault(); // Установка первого города в списке по умолчанию
+        await UpdateWeather();
+    }
+
+    private async Task UpdateWeather()
+    {
+        var firstDayOfMonth = new DateTime(DateTime.Now.Year, SelectedMonth, 1);
+        var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, SelectedMonth);
+        WeatherRecords = await WeatherService.GetWeatherForecast(SelectedCity, daysInMonth);
+    }
+
+    private async Task ChangeCity(ChangeEventArgs e)
+    {
+        SelectedCity = e.Value.ToString();
+        await UpdateWeather();
+    }
+
+    private async Task ChangeMonth(ChangeEventArgs e)
+    {
+        SelectedMonth = int.Parse(e.Value.ToString());
+        await UpdateWeather();
+    }
+
+    private List<List<DateTime>> GetWeeksInMonth()
+    {
+        var weeks = new List<List<DateTime>>();
+        var firstDayOfMonth = new DateTime(DateTime.Now.Year, SelectedMonth, 1);
+        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        var currentDate = firstDayOfMonth;
+        var firstDayOfWeek = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+
+        // Добавить дни перед первым днем месяца
+        while (currentDate.DayOfWeek != firstDayOfWeek)
+        {
+            currentDate = currentDate.AddDays(-1);
+        }
+
+        // Добавить все даты месяца
+        while (currentDate <= lastDayOfMonth)
+        {
+            var week = new List<DateTime>();
+            for (int i = 0; i < 7; i++)
+            {
+                week.Add(currentDate);
+                currentDate = currentDate.AddDays(1);
+            }
+            weeks.Add(week);
+        }
+
+        return weeks;
+    }
+}

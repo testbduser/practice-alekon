@@ -1,0 +1,67 @@
+﻿@page "/tomorrow"
+@using System
+@inject WeatherService WeatherService
+
+<h3>Выберите город</h3>
+
+<select @onchange="ChangeCity">
+    @foreach (string city in Cities)
+    {
+        <option value="@city">@city</option>
+    }
+</select>
+
+<h3>Погода в @SelectedCity завтра</h3>
+
+@if (WeatherRecords != null)
+{
+    <div class="weather-container">
+        @foreach (var record in WeatherRecords.Skip(1))
+        {
+            <div class="weather-record">
+                <div class="label">Дата:</div>
+                <div class="date">@record.Date.ToShortDateString()</div>
+                <div class="label">Макс. температура:</div>
+                <div class="max-temp">@record.MaxTemperature °C</div>
+                <div class="label">Мин. температура:</div>
+                <div class="min-temp">@record.MinTemperature °C</div>
+                <div class="label">Описание:</div>
+                <div class="description">@record.Description</div>
+                <div class="label">Осадки:</div>
+                <div class="precipitation">@record.Precipitation mm</div>
+                <div class="label">Влажность:</div>
+                <div class="humidity">@record.Humidity %</div>
+                <div class="label">Скорость ветра:</div>
+                <div class="wind-speed">@record.WindSpeed km/h</div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Информация о погоде недоступна.</p>
+}
+
+@code {
+    private List<WeatherRecord> WeatherRecords { get; set; }
+    private List<string> Cities { get; set; }
+    private string SelectedCity { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Cities = await WeatherService.GetCities();
+        SelectedCity = Cities.FirstOrDefault(); // Установка первого города в списке по умолчанию
+        await UpdateWeather();
+    }
+
+    private async Task UpdateWeather()
+    {
+        WeatherRecords = await WeatherService.GetWeatherForecast(SelectedCity, 2);
+    }
+
+    private async Task ChangeCity(ChangeEventArgs e)
+    {
+        SelectedCity = e.Value.ToString();
+        await UpdateWeather();
+    }
+}

@@ -1,0 +1,35 @@
+.weather-container[b-qmxmaqvwj6] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-record[b-qmxmaqvwj6] {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.date[b-qmxmaqvwj6] {
+    font-weight: bold;
+}
+
+.max-temp[b-qmxmaqvwj6], .min-temp[b-qmxmaqvwj6] {
+    margin-top: 5px;
+}
+
+.description[b-qmxmaqvwj6], .precipitation[b-qmxmaqvwj6], .humidity[b-qmxmaqvwj6], .wind-speed[b-qmxmaqvwj6] {
+    margin-top: 10px;
+}
+
+.label[b-qmxmaqvwj6] {
+    font-weight: bold;
+}
+
+select[b-qmxmaqvwj6] {
+    word-wrap: normal;
+    text-align: center;
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
