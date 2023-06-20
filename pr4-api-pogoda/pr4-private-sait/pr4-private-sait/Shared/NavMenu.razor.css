@@ -1,0 +1,127 @@
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand {
+    font-size: 1.1rem;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #FFDC84;
+    padding: 20px;
+}
+
+.city-option {
+    cursor: pointer;
+}
+
+    .city-option:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+.selected-city {
+    font-weight: bold;
+}
+
+.nav-item {
+    position: relative; /* Add this line to make the submenu relative to the nav-item */
+}
+
+    .nav-item:hover .submenu {
+        display: block;
+    }
+
+.button {
+    margin-bottom: 20px;
+    padding: 5px 30px;
+    font-size: 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: #FBE9BC;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border: 1px;
+}
+
+.button-ikonka {
+
+}
+
+.social-media {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ikonka {
+    padding-left: 27px;
+    padding-right: 27px;
+    margin: 0;
+}
+
+p {
+    cursor: pointer;
+    margin: 0;
+}
+
+.p {
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
+}
+
+.nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item ::deep a {
+        color: black;
+        border-radius: 4px;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+        justify-content: center;
+        border-radius: 40px;
+    }
+
+        .nav-item ::deep a.active {
+            background-color: #FBE9BC;
+            color: black;
+        }
+
+        .nav-item ::deep a:hover {
+            background-color: #FFDC84;
+            color: black;
+        }
+
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .collapse {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

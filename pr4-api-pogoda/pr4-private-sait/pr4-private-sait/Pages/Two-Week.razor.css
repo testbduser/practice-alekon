@@ -1,0 +1,44 @@
+﻿.two-week-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .two-week-table th,
+    .two-week-table td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .two-week-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .two-week-table td {
+        border-bottom: 1px solid #ddd;
+    }
+
+        /* Настройка расстояния между столбцами */
+        .two-week-table th:not(:last-child),
+        .two-week-table td:not(:last-child) {
+            padding-right: 20px; /* Измените это значение, чтобы настроить расстояние */
+        }
+
+select {
+    word-wrap: normal;
+    text-align: center;
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.export-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
