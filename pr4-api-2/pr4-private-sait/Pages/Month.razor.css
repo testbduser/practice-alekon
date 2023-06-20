@@ -50,3 +50,14 @@ p {
     margin: 0;
     font-size: 10px;
 }
+
+.export-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}

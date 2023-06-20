@@ -82,6 +82,20 @@ using pr4_private_sait.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Two-Week.razor"
+using ClosedXML.Excel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Two-Week.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/two-week")]
     public partial class Two_Week : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,7 +105,7 @@ using pr4_private_sait.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Two-Week.razor"
+#line 44 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Two-Week.razor"
        
     private List<WeatherRecord> WeatherRecords { get; set; }
     private List<string> Cities { get; set; }
@@ -113,6 +127,62 @@ using pr4_private_sait.Shared;
     {
         SelectedCity = e.Value.ToString();
         await UpdateWeather();
+    }
+
+    private async Task ExportToExcel()
+    {
+        // Проверка наличия данных о погоде
+        if (WeatherRecords == null || WeatherRecords.Count == 0)
+        {
+            return;
+        }
+
+        try
+        {
+            // Создание нового документа Excel
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Погода на 14 дней");
+
+                // Заголовки столбцов
+                worksheet.Cell(1, 1).Value = "Дата";
+                worksheet.Cell(1, 2).Value = "Макс. температура";
+                worksheet.Cell(1, 3).Value = "Мин. температура";
+                worksheet.Cell(1, 4).Value = "Описание";
+                worksheet.Cell(1, 5).Value = "Осадки";
+                worksheet.Cell(1, 6).Value = "Влажность";
+                worksheet.Cell(1, 7).Value = "Скорость ветра";
+
+                // Данные о погоде на 14 дней
+                for (int i = 0; i < WeatherRecords.Count && i < 14; i++)
+                {
+                    var day = WeatherRecords[i];
+                    int row = i + 2;
+
+                    worksheet.Cell(row, 1).Value = day.Date.ToShortDateString();
+                    worksheet.Cell(row, 2).Value = day.MaxTemperature;
+                    worksheet.Cell(row, 3).Value = day.MinTemperature;
+                    worksheet.Cell(row, 4).Value = day.Description;
+                    worksheet.Cell(row, 5).Value = day.Precipitation;
+                    worksheet.Cell(row, 6).Value = day.Humidity;
+                    worksheet.Cell(row, 7).Value = day.WindSpeed;
+                }
+
+                // Сохранение файла Excel
+                var fileName = $"{SelectedCity}_погода_14_дней.xlsx";
+                var filePath = Path.Combine(@"E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\wwwroot\import", fileName); // Замените "Путь_к_директории" на вашу желаемую директорию
+
+                workbook.SaveAs(filePath);
+
+                // Вывод сообщения об успешном экспорте
+                Console.WriteLine($"Файл Excel успешно экспортирован: {filePath}");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибки при экспорте
+            Console.WriteLine($"Ошибка при экспорте в Excel: {ex.Message}");
+        }
     }
 
 #line default

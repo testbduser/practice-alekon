@@ -95,6 +95,20 @@ using System.Linq;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Month.razor"
+using ClosedXML.Excel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Month.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/month")]
     public partial class Month : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -104,7 +118,7 @@ using System.Linq;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Month.razor"
+#line 60 "E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\Pages\Month.razor"
        
     private List<WeatherRecord> WeatherRecords { get; set; }
     private List<string> Cities { get; set; }
@@ -164,6 +178,43 @@ using System.Linq;
         }
 
         return weeks;
+    }
+
+    private async Task ExportToExcel()
+    {
+        try
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Погода");
+
+                worksheet.Cell(1, 1).Value = "Дата";
+                worksheet.Cell(1, 2).Value = "Макс. температура";
+                worksheet.Cell(1, 3).Value = "Мин. температура";
+                worksheet.Cell(1, 4).Value = "Описание";
+
+                var row = 2;
+                foreach (var weatherRecord in WeatherRecords)
+                {
+                    worksheet.Cell(row, 1).Value = weatherRecord.Date.ToShortDateString();
+                    worksheet.Cell(row, 2).Value = weatherRecord.MaxTemperature;
+                    worksheet.Cell(row, 3).Value = weatherRecord.MinTemperature;
+                    worksheet.Cell(row, 4).Value = weatherRecord.Description;
+                    row++;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    await File.WriteAllBytesAsync($@"E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\wwwroot\import\{SelectedCity}_месяц.xlsx", content);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при экспорте в Excel: {ex.Message}");
+        }
     }
 
 #line default

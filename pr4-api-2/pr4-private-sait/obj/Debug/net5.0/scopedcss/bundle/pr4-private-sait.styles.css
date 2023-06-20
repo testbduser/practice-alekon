@@ -51,6 +51,17 @@ p[b-5t768al650] {
     margin: 0;
     font-size: 10px;
 }
+
+.export-button[b-5t768al650] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}
 /* _content/pr4-private-sait/Pages/Today.razor.rz.scp.css */
 .weather-container[b-qmxmaqvwj6] {
     display: flex;
@@ -86,6 +97,17 @@ select[b-qmxmaqvwj6] {
     width: 150px;
     margin-left: 30px;
     margin-bottom: 10px;
+}
+
+.export-button[b-qmxmaqvwj6] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
 }
 /* _content/pr4-private-sait/Pages/Tomorrow.razor.rz.scp.css */
 .weather-container[b-b1afusirvm] {
@@ -123,6 +145,17 @@ select[b-b1afusirvm] {
     margin-left: 30px;
     margin-bottom: 10px;
 }
+
+.export-button[b-b1afusirvm] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}
 /* _content/pr4-private-sait/Pages/Two-Week.razor.rz.scp.css */
 .two-week-table[b-gxiwieicd9] {
     width: 100%;
@@ -157,6 +190,17 @@ select[b-gxiwieicd9] {
     margin-left: 30px;
     margin-bottom: 10px;
 }
+
+.export-button[b-gxiwieicd9] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}
 /* _content/pr4-private-sait/Pages/Week.razor.rz.scp.css */
 .week-table[b-qptq2alev5] {
     border-collapse: collapse;
@@ -189,6 +233,17 @@ select[b-qptq2alev5] {
     width: 150px;
     margin-left: 30px;
     margin-bottom: 10px;
+}
+
+.export-button[b-qptq2alev5] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
 }
 /* _content/pr4-private-sait/Shared/MainLayout.razor.rz.scp.css */
 .page[b-z1tlnx4g2d] {

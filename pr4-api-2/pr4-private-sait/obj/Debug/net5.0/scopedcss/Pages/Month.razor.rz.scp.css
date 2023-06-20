@@ -50,3 +50,14 @@ p[b-5t768al650] {
     margin: 0;
     font-size: 10px;
 }
+
+.export-button[b-5t768al650] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}

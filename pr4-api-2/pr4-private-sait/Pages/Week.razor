@@ -1,5 +1,7 @@
 ﻿@page "/week"
 @inject WeatherService WeatherService
+@using ClosedXML.Excel;
+@using System.IO
 
 <h3>Выберите город</h3>
 <select @onchange="ChangeCity">
@@ -11,6 +13,7 @@
 
 <h3>Погода на следующие 7 дней в @SelectedCity</h3>
 
+<button class="export-button" @onclick="ExportToExcel">Экспорт в Excel</button>
 <table class="week-table">
     <tr>
         <th>Дата</th>
@@ -59,5 +62,61 @@
     {
         SelectedCity = e.Value.ToString();
         await UpdateWeather();
+    }
+
+    private async Task ExportToExcel()
+    {
+        // Проверка наличия данных о погоде
+        if (WeatherRecords == null || WeatherRecords.Count == 0)
+        {
+            return;
+        }
+
+        try
+        {
+            // Создание нового документа Excel
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Погода на неделю");
+
+                // Заголовки столбцов
+                worksheet.Cell(1, 1).Value = "Дата";
+                worksheet.Cell(1, 2).Value = "Макс. температура";
+                worksheet.Cell(1, 3).Value = "Мин. температура";
+                worksheet.Cell(1, 4).Value = "Описание";
+                worksheet.Cell(1, 5).Value = "Осадки";
+                worksheet.Cell(1, 6).Value = "Влажность";
+                worksheet.Cell(1, 7).Value = "Скорость ветра";
+
+                // Данные о погоде
+                for (int i = 0; i < WeatherRecords.Count && i < 7; i++)
+                {
+                    var day = WeatherRecords[i];
+                    int row = i + 2;
+
+                    worksheet.Cell(row, 1).Value = day.Date.ToShortDateString();
+                    worksheet.Cell(row, 2).Value = day.MaxTemperature;
+                    worksheet.Cell(row, 3).Value = day.MinTemperature;
+                    worksheet.Cell(row, 4).Value = day.Description;
+                    worksheet.Cell(row, 5).Value = day.Precipitation;
+                    worksheet.Cell(row, 6).Value = day.Humidity;
+                    worksheet.Cell(row, 7).Value = day.WindSpeed;
+                }
+
+                // Сохранение файла Excel
+                var fileName = $"{SelectedCity}_погода_на_неделю.xlsx";
+                var filePath = Path.Combine(@"E:\работы305\prALEKON\pr4c#\pr4-private-sait\pr4-private-sait\wwwroot\import", fileName); // Замените "Путь_к_директории" на вашу желаемую директорию
+
+                workbook.SaveAs(filePath);
+
+                // Вывод сообщения об успешном экспорте
+                Console.WriteLine($"Файл Excel успешно экспортирован: {filePath}");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибки при экспорте
+            Console.WriteLine($"Ошибка при экспорте в Excel: {ex.Message}");
+        }
     }
 }
