@@ -1,0 +1,127 @@
+.navbar-toggler[b-u4j0zy7ulp] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-u4j0zy7ulp] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-u4j0zy7ulp] {
+    font-size: 1.1rem;
+}
+
+.submenu[b-u4j0zy7ulp] {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #FFDC84;
+    padding: 20px;
+}
+
+.city-option[b-u4j0zy7ulp] {
+    cursor: pointer;
+}
+
+    .city-option:hover[b-u4j0zy7ulp] {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+.selected-city[b-u4j0zy7ulp] {
+    font-weight: bold;
+}
+
+.nav-item[b-u4j0zy7ulp] {
+    position: relative; /* Add this line to make the submenu relative to the nav-item */
+}
+
+    .nav-item:hover .submenu[b-u4j0zy7ulp] {
+        display: block;
+    }
+
+.button[b-u4j0zy7ulp] {
+    margin-bottom: 20px;
+    padding: 5px 30px;
+    font-size: 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: #FBE9BC;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border: 1px;
+}
+
+.button-ikonka[b-u4j0zy7ulp] {
+
+}
+
+.social-media[b-u4j0zy7ulp] {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ikonka[b-u4j0zy7ulp] {
+    padding-left: 27px;
+    padding-right: 27px;
+    margin: 0;
+}
+
+p[b-u4j0zy7ulp] {
+    cursor: pointer;
+    margin: 0;
+}
+
+.p[b-u4j0zy7ulp] {
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
+}
+
+.nav-item[b-u4j0zy7ulp] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-u4j0zy7ulp] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-u4j0zy7ulp] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-u4j0zy7ulp]  a {
+        color: black;
+        border-radius: 4px;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+        justify-content: center;
+        border-radius: 40px;
+    }
+
+        .nav-item[b-u4j0zy7ulp]  a.active {
+            background-color: #FBE9BC;
+            color: black;
+        }
+
+        .nav-item[b-u4j0zy7ulp]  a:hover {
+            background-color: #FFDC84;
+            color: black;
+        }
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-u4j0zy7ulp] {
+        display: none;
+    }
+
+    .collapse[b-u4j0zy7ulp] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
