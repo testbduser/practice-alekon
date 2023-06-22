@@ -1,0 +1,39 @@
+.weather-container[b-8b4tttqnf6] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-record[b-8b4tttqnf6] {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.text[b-8b4tttqnf6] {
+    font-weight: bold;
+}
+
+
+.label[b-8b4tttqnf6] {
+    font-weight: bold;
+}
+
+select[b-8b4tttqnf6] {
+    word-wrap: normal;
+    text-align: center;
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.export-button[b-8b4tttqnf6] {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}

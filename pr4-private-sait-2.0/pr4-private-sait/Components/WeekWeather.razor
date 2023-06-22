@@ -1,0 +1,106 @@
+﻿@inject WeatherService WeatherService
+@inject ExcelService ExcelService
+
+<h3>Выберите город</h3>
+<select @onchange="ChangeCity">
+    @foreach (string city in Cities)
+    {
+        <option value="@city">@city</option>
+    }
+</select>
+
+<h3>Погода на следующие 7 дней в @SelectedCity</h3>
+
+<button class="export-button" @onclick="ExportToExcel">Экспорт в Excel</button>
+
+<table class="week-table">
+    <tr>
+        <th>Дата</th>
+        <th>Макс. температура</th>
+        <th>Мин. температура</th>
+        <th>Описание</th>
+        <th>Осадки</th>
+        <th>Влажность</th>
+        <th>Скорость ветра</th>
+    </tr>
+    @if (WeatherRecords != null)
+    {
+        @foreach (var day in WeatherRecords.Take(14))
+        {
+            <tr>
+                <td>@day.Date.ToShortDateString()</td>
+                <td>@day.MaxTemperature °C</td>
+                <td>@day.MinTemperature °C</td>
+                <td>@day.Description</td>
+                <td>@day.Precipitation mm</td>
+                <td>@day.Humidity %</td>
+                <td>@day.WindSpeed km/h</td>
+            </tr>
+        }
+    }
+</table>
+
+@code {
+    private List<WeatherRecord> WeatherRecords { get; set; }
+    private List<string> Cities { get; set; }
+    private string SelectedCity { get; set; }
+    private static int exportCounter = 1;
+
+    [Parameter]
+    public int Days { get; set; }
+    [Parameter]
+    public string Name { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Cities = await WeatherService.GetCities();
+        SelectedCity = Cities.FirstOrDefault(); // Установка первого города в списке по умолчанию
+        await UpdateWeather();
+    }
+
+    private async Task UpdateWeather()
+    {
+        WeatherRecords = await WeatherService.GetWeatherForecast(SelectedCity, Days);
+    }
+
+    private async Task ChangeCity(ChangeEventArgs e)
+    {
+        SelectedCity = e.Value.ToString();
+        await UpdateWeather();
+    }
+
+    private async Task ExportToExcel()
+    {
+        // Проверка наличия данных о погоде
+        if (WeatherRecords == null || WeatherRecords.Count == 0)
+        {
+            return;
+        }
+
+        try
+        {
+            // Экспорт данных в Excel
+            var fileName = $"{SelectedCity}_{Name}_{exportCounter}.xlsx";
+            var data = WeatherRecords.Select(record => new
+            {
+                Date = record.Date.ToShortDateString(),
+                MaxTemperature = record.MaxTemperature,
+                MinTemperature = record.MinTemperature,
+                Description = record.Description,
+                Precipitation = record.Precipitation,
+                Humidity = record.Humidity,
+                WindSpeed = record.WindSpeed
+            });
+
+            ExcelService.ExportToExcel(fileName, "Погода", data);
+
+            // Увеличение счетчика
+            exportCounter++;
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибки при экспорте
+            Console.WriteLine($"Ошибка при экспорте в Excel: {ex.Message}");
+        }
+    }
+}

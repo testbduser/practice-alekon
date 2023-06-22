@@ -1,0 +1,56 @@
+.weather-container[b-ym8tqak52r] {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.text[b-ym8tqak52r] {
+    margin-top: 5px;
+}
+
+
+select[b-ym8tqak52r] {
+    word-wrap: normal;
+    text-align: center;
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.weather-container[b-ym8tqak52r] {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.month-table[b-ym8tqak52r] {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 1000px;
+    height: 60px;
+}
+
+.month-cell[b-ym8tqak52r] {
+    width: 80px;
+    height: 60px;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+p[b-ym8tqak52r] {
+    margin: 0;
+    font-size: 10px;
+}
+
+.export-button[b-ym8tqak52r] {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}

@@ -1,0 +1,43 @@
+.week-table[b-avh2bp2mmc] {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .week-table th[b-avh2bp2mmc],
+    .week-table td[b-avh2bp2mmc] {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .week-table th[b-avh2bp2mmc] {
+        background-color: #f2f2f2;
+    }
+
+    .week-table tr:nth-child(even)[b-avh2bp2mmc] {
+        background-color: #f9f9f9;
+    }
+
+    /* Настройка расстояния между столбцами */
+    .week-table th:nth-child(n+2)[b-avh2bp2mmc],
+    .week-table td:nth-child(n+2)[b-avh2bp2mmc] {
+        padding-left: 20px; /* Измените значение для настройки расстояния */
+    }
+
+select[b-avh2bp2mmc] {
+    word-wrap: normal;
+    text-align: center;
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.export-button[b-avh2bp2mmc] {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
