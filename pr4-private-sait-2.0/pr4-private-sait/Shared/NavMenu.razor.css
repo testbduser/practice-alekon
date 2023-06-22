@@ -103,6 +103,7 @@ p {
         line-height: 3rem;
         justify-content: center;
         border-radius: 40px;
+        font-size: 18px;
     }
 
         .nav-item ::deep a.active {
