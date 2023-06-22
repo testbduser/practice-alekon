@@ -20,20 +20,34 @@
         @foreach (var record in WeatherRecords.Skip(SkipDays))
         {
             <div class="weather-record">
+              <div>
                 <div class="label">Дата:</div>
                 <div class="text">@record.Date.ToShortDateString()</div>
+              </div>
+              <div>
                 <div class="label">Макс. температура:</div>
                 <div class="text">@record.MaxTemperature °C</div>
+              </div>
+              <div>
                 <div class="label">Мин. температура:</div>
                 <div class="text">@record.MinTemperature °C</div>
+              </div>
+              <div>
                 <div class="label">Описание:</div>
                 <div class="text">@record.Description</div>
+              </div>
+              <div>
                 <div class="label">Осадки:</div>
                 <div class="text">@record.Precipitation mm</div>
+              </div>
+              <div>
                 <div class="label">Влажность:</div>
                 <div class="text">@record.Humidity %</div>
+              </div>
+              <div>
                 <div class="label">Скорость ветра:</div>
                 <div class="text">@record.WindSpeed km/h</div>
+              </div>
             </div>
         }
     </div>
